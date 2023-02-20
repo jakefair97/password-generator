@@ -1,7 +1,4 @@
-// Assignment code here
-
-
-// Assign arrays with different character types
+// Assign character types to unique arrays
 var capLetters = [...Array(26)];
 var lowLetters = [...Array(26)];
 for (var i = 0; i < capLetters.length; i++) {
@@ -13,7 +10,7 @@ var specialCharStr =  " !\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
 var specialChars = specialCharStr.split("");
 
 function generatePassword() {
-  //Define how long password should be
+  //User decides how long password should be
   var PWLen = prompt("How many characters long do you want your password to be? Please enter a number between 8 and 128.")
   if (PWLen == null) {
     return
@@ -28,7 +25,7 @@ function generatePassword() {
     PWLen = parseInt(PWLen);
   }
 
-  //Define charcter types to use
+  //User decides whiich character types to use
   var useCapLet = prompt("Do you want your password to include capital letters? Y/N");
   if (useCapLet == null) {
     return
@@ -76,14 +73,24 @@ function generatePassword() {
   }
   
   // Generate the password based on selected criteria
+  var tempChars = [...PWChars];
   var password = "";
-  for (i = 0; i < PWLen; i++) {
+  // This loop randomly assigns characters to the password, but it removes each array once it's used to ensure that each character type requested by the user is included
+  for (i = 0; i < tempChars.length;){
+    var X = Math.floor(Math.random() * tempChars.length);
+    var Y = Math.floor(Math.random() * tempChars[X].length);
+    password+= tempChars[X][Y];
+    tempChars.splice(X, 1);
+  }
+
+  // Randomly assign the remaining characters
+  for (i = 0; i < PWLen - PWChars.length; i++) {
     var X = Math.floor(Math.random() * PWChars.length);
-    var Y = Math.floor(Math.random() * PWChars[X].length)
+    var Y = Math.floor(Math.random() * PWChars[X].length);
     password+= PWChars[X][Y];
   }
-  return password;
 
+  return password;
 }
 
 // Get references to the #generate element
@@ -98,7 +105,6 @@ function writePassword() {
   }
 
   passwordText.value = password;
-
 }
 
 // Add event listener to generate button
