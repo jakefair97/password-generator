@@ -1,7 +1,7 @@
 # Random Password Generator
 
 ## Description
-This web application was created to generate a random password based on user selected criteria to provide security
+This web application was created to generate a random password based on user selected criteria to provide security for the user.
 
 ## Installation
 N/A
