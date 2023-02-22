@@ -25,67 +25,68 @@ function generatePassword() {
     PWLen = parseInt(PWLen);
   }
 
-  //User decides whiich character types to use
-  var useCapLet = prompt("Do you want your password to include capital letters? Enter \"Y\" or \"N\"");
-  if (useCapLet == null) {
-    return
-  }
-  useCapLet = useCapLet.toUpperCase();
-
-  while (useCapLet != "Y" && useCapLet != 'N') {
-    useCapLet = prompt("That was an invalid input. Please enter \"Y\" or \"N\"");
+  // User decides whiich character types to use
+  // Verify at least one character type is selected
+  while (useCapLet != 'Y' && useLowLet != 'Y' && useNum != 'Y' && useSpecChar != 'Y') {
+    var useCapLet = prompt("Do you want your password to include capital letters? Enter \"Y\" or \"N\"");
     if (useCapLet == null) {
       return
     }
     useCapLet = useCapLet.toUpperCase();
-  }
 
-  var useLowLet = prompt("Do you want your password to include lowercase letters? Enter \"Y\" or \"N\"");
-  if (useLowLet == null) {
-    return
-  }
-  useLowLet = useLowLet.toUpperCase();
+    while (useCapLet != "Y" && useCapLet != 'N') {
+      useCapLet = prompt("That was an invalid input. Please enter \"Y\" or \"N\"");
+      if (useCapLet == null) {
+        return
+      }
+      useCapLet = useCapLet.toUpperCase();
+    }
 
-  while (useLowLet != "Y" && useLowLet != 'N') {
-    useLowLet = prompt("That was an invalid input. Please enter \"Y\" or \"N\"");
+    var useLowLet = prompt("Do you want your password to include lowercase letters? Enter \"Y\" or \"N\"");
     if (useLowLet == null) {
       return
     }
     useLowLet = useLowLet.toUpperCase();
-  }
 
-  var useNum = prompt("Do you want your password to include numbers? Enter \"Y\" or \"N\"");
-  if (useNum == null) {
-    return
-  }
-  useNum = useNum.toUpperCase();
+    while (useLowLet != "Y" && useLowLet != 'N') {
+      useLowLet = prompt("That was an invalid input. Please enter \"Y\" or \"N\"");
+      if (useLowLet == null) {
+        return
+      }
+      useLowLet = useLowLet.toUpperCase();
+    }
 
-  while (useNum != "Y" && useNum != 'N') {
-    useNum = prompt("That was an invalid input. Please enter \"Y\" or \"N\"");
+    var useNum = prompt("Do you want your password to include numbers? Enter \"Y\" or \"N\"");
     if (useNum == null) {
       return
     }
     useNum = useNum.toUpperCase();
-  }
 
-  var useSpecChar = prompt("Do you want your password to include special characters? Enter \"Y\" or \"N\"");
-  if (useSpecChar == null) {
-    return
-  }
-  useSpecChar = useSpecChar.toUpperCase();
+    while (useNum != "Y" && useNum != 'N') {
+      useNum = prompt("That was an invalid input. Please enter \"Y\" or \"N\"");
+      if (useNum == null) {
+        return
+      }
+      useNum = useNum.toUpperCase();
+    }
 
-  while (useSpecChar != "Y" && useSpecChar != 'N') {
-    useSpecChar = prompt("That was an invalid input. Please enter \"Y\" or \"N\"");
+    var useSpecChar = prompt("Do you want your password to include special characters? Enter \"Y\" or \"N\"");
     if (useSpecChar == null) {
       return
     }
     useSpecChar = useSpecChar.toUpperCase();
-  }
 
-  // Verify at least one character type is selected
-  if (useCapLet != 'Y' && useLowLet != 'Y' && useNum != 'Y' && useSpecChar != 'Y') {
-    alert("At least one character type must be selected. Password not generated.");
-    return
+    while (useSpecChar != "Y" && useSpecChar != 'N') {
+      useSpecChar = prompt("That was an invalid input. Please enter \"Y\" or \"N\"");
+      if (useSpecChar == null) {
+        return
+      }
+      useSpecChar = useSpecChar.toUpperCase();
+    }
+    // Alert the user that they haven't selected a character type
+    if (useCapLet != 'Y' && useLowLet != 'Y' && useNum != 'Y' && useSpecChar != 'Y') {
+      alert("At least one character type must be selected to generate a password. Please respond \"Y\" to at least one of the character type prompts.");
+    }
   }
 
   // Push the user's selected character types to an array
