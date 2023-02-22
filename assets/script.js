@@ -88,7 +88,7 @@ function generatePassword() {
     return
   }
 
-  // Push the selected character types to an array
+  // Push the user's selected character types to an array
   var PWChars = [];
 
   if (useCapLet == 'Y') {
@@ -108,8 +108,8 @@ function generatePassword() {
   var tempChars = [...PWChars];
   var password = "";
   // This loop randomly assigns characters to the password, 
-  // but it removes each array once it's used to ensure 
-  // that each character type requested by the user is included
+  // but it removes each character type array from a temporary array of selected character types
+  // once it's used to ensure that each character type requested by the user is included
   for (i = 0; i < tempChars.length;){
     var X = Math.floor(Math.random() * tempChars.length);
     var Y = Math.floor(Math.random() * tempChars[X].length);
